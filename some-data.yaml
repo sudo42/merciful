@@ -4,12 +4,33 @@ urls:
     auth:
         login: 'ucp.php?mode=login'
         register: 'ucp.php?mode=register'
-        logout:
+        logout: 'ucp.php?mode=logout'
     pages:
         home: 'index.php'
+        profile:
+            $path: 'memberlist.php'
+            $query:
+                mode: 'viewprofile'
+                u: '{{uid}}'
+        personal:
+            entryPoint: 'ucp.php'
+            notifications: 'ucp.php?i=ucp_notifications'
+            messages: 'ucp.php?i=pm'
 
 selectors:
     nav:
+        profile:
+            $sel: '#username_logged_in'
+            avatar: '.avatar'
+            nick: '.username'
+        notificationDropdown:
+            $sel: '#notification_list'
+            entry:
+                $sel: 'a.notification-block'
+                avatar: '.avatar'
+                title: '.notification-title'
+                ref: '.notification-reference'
+                time: '.notification-time'
     parts:
         category:
         topic:
@@ -18,5 +39,4 @@ selectors:
             id:
             nick:
             avatar:
-
 
