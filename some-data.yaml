@@ -1,0 +1,22 @@
+# ... to be continued!
+
+urls:
+    auth:
+        login: 'ucp.php?mode=login'
+        register: 'ucp.php?mode=register'
+        logout:
+    pages:
+        home: 'index.php'
+
+selectors:
+    nav:
+    parts:
+        category:
+        topic:
+        post:
+        user:
+            id:
+            nick:
+            avatar:
+
+
