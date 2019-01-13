@@ -1,4 +1,4 @@
-## _M_obile _E_ndpoint for _R_eading _C_ontent from _I_nternet _F_orums. _U_sually _L_agging!
+## *M*obile *E*ndpoint for *R*eading *C*ontent from *I*nternet *F*orums. *U*sually *L*agging!
 
 This application aims to display the contents of a particular HTML-based forum in a more mobile friendly way (a so called _app_, for example).
 It will be a first approach, likely consisting of horrific undocumented code full of ~bugs~ features.
