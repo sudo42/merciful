@@ -5,6 +5,7 @@ urls:
         login: 'ucp.php?mode=login'
         register: 'ucp.php?mode=register'
         logout: 'ucp.php?mode=logout'
+        passwordReset: 'ucp.php?mode=sendpassword'
     pages:
         home: 'index.php'
         profile:
@@ -16,6 +17,23 @@ urls:
             entryPoint: 'ucp.php'
             notifications: 'ucp.php?i=ucp_notifications'
             messages: 'ucp.php?i=pm'
+
+requests:
+    auth:
+        login:
+            # url: 'ucp.php?mode=login' # left out, as it is the same as int he `url` section
+            method: 'post'
+            data:
+                username: '{{username}}' # string
+                password: '{{password}}' # string
+                autologin: '{{autologin}}' # boolean
+                # can't find CSRF token fields here ...
+                login: 'Anmelden' # TODO: likely optional / value unimportant
+
+cookies:
+    sid: 'phpbb_{{siteId}}_sid'
+    uid: 'phpbb_{{siteId}}_u'
+    key: 'phpbb_{{siteId}}_k' # auologin / "permanent" login
 
 selectors:
     nav:
@@ -32,6 +50,26 @@ selectors:
                 ref: '.notification-reference'
                 time: '.notification-time'
     parts:
+        topicGroup:
+            $sel: '.forabg'
+            header: '.topiclist:not(.forums)'
+            list:
+                $sel: '.lopiclist.forums'
+                entry:
+                    $sel: '.row'
+                    unread: '.forum_unread'
+                    unreadSubforum: '.forum_unread_subforum'
+                    url: 'a.forumtitle'
+                    title: '.list-inner .forumtitle'
+                    moderators: '.list-inner .username-coloured' # not nice, but should work
+                    description: '.list-inner' # plain text / remove title and mods (see above)
+                    topicCount: '.topics' # plain text / remove `dnf` element
+                    postCount: '.posts' # plain text / remove `dfn` element
+                    lastPost:
+                        $sel: '.lastpost'
+                        title: '.lastsubject'
+                        author: '.username, .username-coloured' # or 'a[href^=./memberlist.php?mode=viewprofile&]'
+                        time: 'lastpost span' # last non-enclosed text; very not-nice!
         category:
         topic:
         post:
