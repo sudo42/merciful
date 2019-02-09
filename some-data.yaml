@@ -21,7 +21,7 @@ urls:
 requests:
     auth:
         login:
-            # url: 'ucp.php?mode=login' # left out, as it is the same as int he `url` section
+            # url: 'ucp.php?mode=login' # left out: the same as in the `url` section
             method: 'post'
             data:
                 username: '{{username}}' # string
@@ -33,7 +33,7 @@ requests:
 cookies:
     sid: 'phpbb_{{siteId}}_sid'
     uid: 'phpbb_{{siteId}}_u'
-    key: 'phpbb_{{siteId}}_k' # auologin / "permanent" login
+    key: 'phpbb_{{siteId}}_k' # autologin / "permanent" login
 
 selectors:
     nav:
